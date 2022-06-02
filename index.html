@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Recorder</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-center">
+            <ul class="uk-navbar-nav">
+                <li class="uk-active uk-text-bold"><a href="#">Voice Recorder</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="uk-container uk-container-xsmall uk-align-center uk-text-center">
+        <h4>Choose microphone</h4>
+        <div class="app uk-margin uk-child-width-1-1" uk-grid>
+            <div>
+                <select name="" class="uk-select" id="micSelect"></select>
+            </div>
+            
+            <select id="visSelect" class="uk-hidden">
+              <option value="sinewave">Circle</option>
+            </select>
+            
+            <label class="uk-text-bold">Ghi lại giọng nói (Record voice)</label>
+            <div>
+                <button id="record" class="uk-margin-small uk-button uk-button-default uk-width-small">Record</button>
+            </div>
+            <div>
+                <button id="stop" class="uk-margin-small uk-button uk-button-danger uk-width-small">Stop</button>
+            </div>
+            <div class="audio-controls">
+                <div>
+                    <audio id="audio" controls></audio>
+                </div>
+              
+            </div>
+          
+            <div id="msg">Recording...</div>
+          <div>
+            <form action="http://34.143.231.15:8080/add" method="post" enctype="multipart/form-data">
+            <label class="uk-text-bold">Nhập số điện thoại (Phone number)</label>
+            <input class="uk-input uk-margin-small" type="text" id="phone" name="phone">
+            
+            <input class="uk-input uk-margin-small" type="file" id="wav_file" name="wav_file" accept="audio/*" value="demo.wav">
+            <button onclick="window.location.href = '/';" class="uk-button uk-button-primary uk-margin-small" type="submit">Submit</button>
+            </form>
+            <div>
+                <a id="download" class="uk-button uk-button-secondary">Download Record</a>
+            </div>
+            <div class="uk-width-viewport uk-margin-remove uk-padding-remove">
+                <canvas height="100"></canvas>
+            </div>
+    </div>
+    
+    
+    
+    <style>
+        #msg {
+      visibility: hidden;
+    }
+    </style>
+    <script src="script.js"></script>
+    
+</body>
+</html>
